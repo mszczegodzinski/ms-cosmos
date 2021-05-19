@@ -1,34 +1,42 @@
-import React, { Children } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { TypographyH300 } from '../Typography/Typography';
 import Button from '../Button/Button';
+import Footer from '../Footer/Footer';
+import Logo from '../Logo/Logo';
 
 const DashboardBackground = styled.div`
-	position: relative;
-	max-width: 1440px;
-	height: 768px;
+	width: 100vw;
+	height: 100vh;
 	background: #221b3a;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 `;
 
 const DashboardGrid = styled.div`
-	position: absolute;
-	width: 1140px;
+	width: 100%;
+	max-width: 1140px;
 	height: 640px;
-	left: 150px;
-	top: 0px;
+	flex-grow: 1;
+	@media (max-width: 1200px) {
+		padding: 0 25px;
+	}
 `;
 
 const Dashboard = () => {
 	return (
 		<DashboardBackground className='dashboardBackground'>
 			<DashboardGrid className='dashboardGrid'>
+				<Logo />
 				<TypographyH300>
 					<div style={{ border: '1px solid black' }}>aaa</div>
 				</TypographyH300>
 				<div style={{ border: '1px solid black' }}>aaa</div>
 				<div style={{ border: '1px solid black' }}>bbb</div>
-				<Button>some text</Button>
+				<Button>Launch Rocket!</Button>
 			</DashboardGrid>
+			<Footer />
 		</DashboardBackground>
 	);
 };

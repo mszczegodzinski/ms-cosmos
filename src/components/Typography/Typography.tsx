@@ -30,7 +30,8 @@ export const TypographyH100 = styled(TypographyH200)`
 `;
 
 /* 12/Regular */
-export const TypographyRegular = styled(TypographyH100)`
+export const TypographyRegular = styled(TypographyH100)<{ color?: string }>`
 	font-weight: 400;
 	letter-spacing: 0.4px;
+	color: ${(props) => props.color};
 `;
