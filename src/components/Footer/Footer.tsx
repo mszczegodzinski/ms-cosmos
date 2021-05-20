@@ -8,19 +8,21 @@ const StyledFooter = styled.div`
 	color: #8d7fbc;
 	margin-bottom: 24px;
 	width: 100%;
+	z-index: 2;
 `;
 
-const StyledFooterWrapper = styled.div`
-	width: 100%;
+const CenteredContent = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
 `;
 
-const FooterContentStyle = styled.div`
-	display: flex;
+const StyledFooterWrapper = styled(CenteredContent)`
+	width: 100%;
+`;
+
+const FooterContentStyle = styled(CenteredContent)`
 	justify-content: space-between;
-	align-items: center;
 	flex-basis: 100%;
 	padding: 0 20px;
 	@media (min-width: 1200px) {

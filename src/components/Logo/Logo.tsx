@@ -17,9 +17,9 @@ const LogoPurple = styled.div`
 const Footer = () => {
 	return (
 		<LogoWrapper className='logo'>
-			<img src={VectorWhite} />
+			<img src={VectorWhite} alt='usertive logo' />
 			<LogoPurple>
-				<img src={VectorPurple} />
+				<img src={VectorPurple} alt='usertive logo' />
 			</LogoPurple>
 		</LogoWrapper>
 	);

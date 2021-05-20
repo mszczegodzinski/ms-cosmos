@@ -9,6 +9,7 @@ const CustomButton = styled.button`
 	padding: 12px 32px;
 	background: #7860d7;
 	border-radius: 8px;
+	border: 0px;
 	&:hover {
 		background: #05c9b7;
 	}
