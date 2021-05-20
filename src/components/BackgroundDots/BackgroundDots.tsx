@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-// colors: #E34A67 x2, #00C9B7 x2, #7860D7 x1
+
 const BackgroundDotTemplate = styled.div`
 	position: absolute;
     width: 8px;
@@ -34,7 +34,7 @@ const RedDotSecond = styled(RedDotObject)`
 
 const TurquoiseDotFirst = styled(TurquoiseDotObject)`
     top: 10.94vh;
-    right: 36.68vw;
+    right: 38.68vw;
 `
 
 const TurquoiseDotSecond = styled(TurquoiseDotObject)`
@@ -44,11 +44,10 @@ const TurquoiseDotSecond = styled(TurquoiseDotObject)`
 
 const PurpleDot = styled(PurpleDotObject)`
     bottom: 14.06vh;
-    left: 45.63vw;
+    left: 45.83vw;
 `
 
-const BackgroundDot = () => {
-
+const BackgroundDots = () => {
     return (
         <>
             <RedDotFirst />
@@ -60,4 +59,4 @@ const BackgroundDot = () => {
     );
 };
 
-export default BackgroundDot;
+export default BackgroundDots;
