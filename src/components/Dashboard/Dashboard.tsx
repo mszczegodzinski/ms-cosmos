@@ -4,8 +4,7 @@ import { TypographyH300 } from '../Typography/Typography';
 import Button from '../Button/Button';
 import Footer from '../Footer/Footer';
 import Logo from '../Logo/Logo';
-import Circle from '../Circle/Circle';
-import CircleComplete from '../Circle/CircleComplete';
+import Circles from '../Circle/Circles';
 
 const DashboardWrapper = styled.div`
 	position: relative;
@@ -34,9 +33,7 @@ const DashboardGrid = styled.div`
 const Dashboard = () => {
 	return (
 		<DashboardWrapper>
-			<Circle visiblePart='left' />
-			<Circle visiblePart='right' />
-			<Circle visiblePart='bottom' />
+			<Circles />
 			<DashboardGridWrapper className='dashboardGridWrapper'>
 				<DashboardGrid className='dashboardGrid'>
 					<Logo />
