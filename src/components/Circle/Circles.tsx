@@ -6,26 +6,25 @@ const CircleTemplate = styled.div`
 	position: absolute;
 	transition: 0.5s;
 	transition-delay: 0.3s;
+	width: 347px;
+	height: 347px;
 `;
 // left part of circle is visible:
 const CircleLeft = styled(CircleTemplate)`
-	width: 347px;
-	height: 347px;
 	top: 14.06vh;
-	left: calc(100vw - 197px);
+	right: -10vw;
+	// left: calc(100vw - 197px);
 `;
 // right part of circle is visible:
 const CircleRight = styled(CircleTemplate)`
-	width: 347px;
-	height: 347px;
 	top: 41.93vh;
-	right: calc(100vw - 170px);
+	// right: calc(100vw - 170px);
+	left: -12.29vw;
 `;
 // bottom part of circle is visible:
 const CircleBottom = styled(CircleTemplate)`
-	width: 347px;
-	height: 347px;
-	bottom: calc(100vh - 141px);
+	// bottom: calc(100vh - 141px);
+	top: -26.82vh;
 	left: 33.6vw;
 `;
 
