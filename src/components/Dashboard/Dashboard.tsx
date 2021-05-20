@@ -5,6 +5,7 @@ import Button from '../Button/Button';
 import Footer from '../Footer/Footer';
 import Logo from '../Logo/Logo';
 import Circles from '../Circle/Circles';
+import BackgroundDot from '../BackgroundDot/BackgroundDot';
 
 const DashboardWrapper = styled.div`
 	position: relative;
@@ -34,15 +35,16 @@ const Dashboard = () => {
 	return (
 		<DashboardWrapper>
 			<Circles />
+			<BackgroundDot />
 			<DashboardGridWrapper className='dashboardGridWrapper'>
 				<DashboardGrid className='dashboardGrid'>
 					<Logo />
-					<TypographyH300>
+					{/* <TypographyH300>
 						<div style={{ border: '1px solid black' }}>aaa</div>
 					</TypographyH300>
 					<div style={{ border: '1px solid black' }}>aaa</div>
 					<div style={{ border: '1px solid black' }}>bbb</div>
-					<Button>Launch Rocket!</Button>
+					<Button>Launch Rocket!</Button> */}
 				</DashboardGrid>
 				<Footer />
 			</DashboardGridWrapper>

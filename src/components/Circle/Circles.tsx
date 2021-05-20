@@ -32,15 +32,15 @@ const CircleBottom = styled(CircleTemplate)`
 const Circles = () => {
 	return (
 		<>
+			<CircleBottom>
+				<CircleComplete />
+			</CircleBottom>
 			<CircleLeft>
 				<CircleComplete />
 			</CircleLeft>
 			<CircleRight>
 				<CircleComplete />
 			</CircleRight>
-			<CircleBottom>
-				<CircleComplete />
-			</CircleBottom>
 		</>
 	);
 };
