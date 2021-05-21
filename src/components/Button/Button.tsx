@@ -36,54 +36,56 @@ const Button = ({ children }: ButtonProps) => {
 
 	useEffect(() => {
 		if (isRocketLaunched) {
-			const rocketTimeout = setTimeout(() => {
+			const rocket = document.querySelector('.rocket');
+			const smokeLeft = document.querySelector('.smokeLeft');
+			const smokeRight = document.querySelector('.smokeRight');
+			const landingGear = document.querySelector('.landingGear');
+			// disable button:
+			setIsRocketLaunched(true);
+			// add start animation:
+			rocket?.classList.add('rocketStart');
+			smokeLeft?.classList.add('showSmokeLeft');
+			smokeRight?.classList.add('showSmokeRight');
+			landingGear?.classList.add('hideLandingGear');
+
+			// add ladning animation:
+			const rocketLandingTimeout = setTimeout(() => {
+				rocket?.classList.add('rocketLanding');
+			}, 3100);
+			// add landing smoke animation:
+			const landingSmokeAnimationTimeout = setTimeout(() => {
+				smokeLeft?.classList.add('showSmokeLeftLanding');
+				smokeRight?.classList.add('showSmokeRightLanding');
+				landingGear?.classList.add('showLandingGear');
+			}, 5800);
+			// remove animation classes to make it possible to start again:
+			const removeRocketAnimationTimeout = setTimeout(() => {
+				rocket?.classList.remove('rocketStart', 'rocketLanding');
+				landingGear?.classList.remove('hideLandingGear', 'showLandingGear');
+			}, 6200);
+			//remove smoke animation classes:
+			const removeSmokeAnimationTimeout = setTimeout(() => {
+				smokeLeft?.classList.remove('showSmokeLeft', 'showSmokeLeftLanding');
+				smokeRight?.classList.remove('showSmokeRight', 'showSmokeRightLanding');
+			}, 7700);
+
+			const launchRocketBtnTimeout = setTimeout(() => {
 				setIsRocketLaunched(false);
 			}, 7700);
 			return () => {
-				clearTimeout(rocketTimeout);
+				clearTimeout(launchRocketBtnTimeout);
+				clearTimeout(rocketLandingTimeout);
+				clearTimeout(landingSmokeAnimationTimeout);
+				clearTimeout(removeRocketAnimationTimeout);
+				clearTimeout(removeSmokeAnimationTimeout);
 			};
 		}
 	}, [isRocketLaunched]);
 
-	const lanuchRocket = () => {
-		const rocket = document.querySelector('.rocket');
-		const smokeLeft = document.querySelector('.smokeLeft');
-		const smokeRight = document.querySelector('.smokeRight');
-		const landingGear = document.querySelector('.landingGear');
-		// disable button:
-		setIsRocketLaunched(true);
-		// add start animation:
-		rocket?.classList.add('rocketStart');
-		smokeLeft?.classList.add('showSmokeLeft');
-		smokeRight?.classList.add('showSmokeRight');
-		landingGear?.classList.add('hideLandingGear');
-
-		// add ladning animation:
-		setTimeout(() => {
-			rocket?.classList.add('rocketLanding');
-		}, 3100);
-		// add landing smoke animation:
-		setTimeout(() => {
-			smokeLeft?.classList.add('showSmokeLeftLanding');
-			smokeRight?.classList.add('showSmokeRightLanding');
-			landingGear?.classList.add('showLandingGear');
-		}, 5800);
-		// remove animation classes to make it possible to start again:
-		setTimeout(() => {
-			rocket?.classList.remove('rocketStart', 'rocketLanding');
-			landingGear?.classList.remove('hideLandingGear', 'showLandingGear');
-		}, 6200);
-		//remove smoke animation classes:
-		setTimeout(() => {
-			smokeLeft?.classList.remove('showSmokeLeft', 'showSmokeLeftLanding');
-			smokeRight?.classList.remove('showSmokeRight', 'showSmokeRightLanding');
-		}, 7700);
-	};
-
 	return (
 		<ButtonWrapper>
 			<CustomRipples during={isRocketLaunched ? 0 : 800} color={isRocketLaunched ? 'transparent' : 'rgba(0,0,0,0.2)'}>
-				<CustomButton className='launchBtn pointer' onClick={lanuchRocket} disabled={isRocketLaunched}>
+				<CustomButton className='launchBtn pointer' onClick={() => setIsRocketLaunched(true)} disabled={isRocketLaunched}>
 					<TypographyH300>{children}</TypographyH300>
 				</CustomButton>
 			</CustomRipples>
