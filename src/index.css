@@ -12,3 +12,121 @@ body {
 	overflow: hidden;
 	background-color: #221b3a;
 }
+
+.pointer {
+	cursor: url('assets/icons/Pointer.svg'), auto !important;
+}
+
+.rocketStart {
+	animation: rocketStartAnimation 2.5s cubic-bezier(0.51, 0.01, 0.99, 0.39) 0.6s forwards;
+}
+.rocketLanding {
+	animation: rocketLandingAnimation 2.5s cubic-bezier(0, 0.45, 0.65, 0.65) 0.6s backwards;
+}
+.showSmokeLeft {
+	animation: smokeLeftAnimation 3s linear 0s forwards;
+}
+.showSmokeRight {
+	animation: smokeRightAnimation 3s linear 0s forwards;
+}
+.showSmokeLeftLanding {
+	animation: smokeLeftLandingAnimation 1.5s linear 0s forwards;
+}
+.showSmokeRightLanding {
+	animation: smokeRightLandingAnimation 1.5s linear 0s forwards;
+}
+.hideLandingGear {
+	animation: hideLandingGear 0.3s linear 0.3s forwards;
+}
+.showLandingGear {
+	animation: showLandingGear 0.3s linear 0s forwards;
+}
+
+@keyframes rocketStartAnimation {
+	0% {
+		transform: translateY(0px);
+	}
+	100% {
+		transform: translateY(-200px);
+	}
+}
+@keyframes rocketLandingAnimation {
+	0% {
+		transform: translateY(-200px);
+	}
+	100% {
+		transform: translateY(0px);
+	}
+}
+@keyframes smokeLeftAnimation {
+	0% {
+		opacity: 0;
+		transform: translateX(15px);
+	}
+	10% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+		transform: translateX(-10px);
+	}
+}
+@keyframes smokeRightAnimation {
+	0% {
+		opacity: 0;
+		transform: translateX(-15px);
+	}
+	10% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+		transform: translateX(10px);
+	}
+}
+@keyframes smokeLeftLandingAnimation {
+	0% {
+		opacity: 0.6;
+		transform: translateX(15px);
+	}
+	100% {
+		opacity: 0;
+		transform: translateX(-5px);
+	}
+}
+@keyframes smokeRightLandingAnimation {
+	0% {
+		opacity: 0.6;
+		transform: translateX(-15px);
+	}
+	100% {
+		opacity: 0;
+		transform: translateX(5px);
+	}
+}
+@keyframes hideLandingGear {
+	0% {
+		opacity: 1;
+		transform: translateY(0px);
+	}
+	100% {
+		opacity: 0;
+		transform: translateY(-20px);
+	}
+}
+@keyframes showLandingGear {
+	0% {
+		opacity: 0;
+		transform: translateY(-20px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0px);
+	}
+}

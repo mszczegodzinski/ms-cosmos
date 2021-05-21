@@ -21,27 +21,29 @@ const StyledSmokeLeft = styled.div`
 	position: absolute;
 	bottom: 299px;
 	right: 308px;
+	opacity: 0;
 `;
 
 const StyledSmokeRight = styled.div`
 	position: absolute;
 	bottom: 299px;
 	right: 188px;
+	opacity: 0;
 `;
 
 const Rocket = () => {
 	return (
 		<>
-			<StyledSmokeLeft>
+			<StyledSmokeLeft className='smokeLeft'>
 				<img src={SmokeLeft} alt='smoke left' />
 			</StyledSmokeLeft>
-			<StyledSmokeRight>
+			<StyledSmokeRight className='smokeRight'>
 				<img src={SmokeRight} alt='smoke right' />
 			</StyledSmokeRight>
-			<StyledLandingGear>
+			<StyledLandingGear className='landingGear'>
 				<img src={LandingGear} alt='landing gear' />
 			</StyledLandingGear>
-			<StyledRocket>
+			<StyledRocket className='rocket'>
 				<img src={RocketImage} alt='rocket' />
 			</StyledRocket>
 		</>
