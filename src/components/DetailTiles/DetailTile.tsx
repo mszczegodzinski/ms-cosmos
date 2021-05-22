@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useRef, ReactNode, RefObject } from 'react';
 import styled from 'styled-components';
 import { TypographyH200 } from '../Typography/Typography';
 
@@ -35,11 +35,15 @@ interface DetailTile {
 	title: string;
 	image: string;
 	alt: string;
+	className: string;
 }
 
-const DetailsTile = ({ title, image, alt }: DetailTile) => {
+const DetailsTile = ({ title, image, alt, className }: DetailTile) => {
+	const [tileTitle, setTileTitle] = useState<string>(title);
+	useEffect(() => {}, [tileTitle]);
+
 	return (
-		<DetailTileWrapper image={image}>
+		<DetailTileWrapper id={`${title.toLowerCase()}`} image={image} className={className}>
 			<StyledTitle className='title'>
 				<TypographyH200>{title}</TypographyH200>
 			</StyledTitle>

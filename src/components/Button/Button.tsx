@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { TypographyH300 } from '../Typography/Typography';
 import { createRipples } from 'react-ripples';
 

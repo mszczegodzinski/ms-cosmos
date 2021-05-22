@@ -7,6 +7,8 @@ import BackgroundDots from '../BackgroundDots/BackgroundDots';
 import LaunchRocket from '../LaunchRocket/LaunchRocket';
 import DetailTiles from '../DetailTiles/DetailTiles';
 import styleUtils from '../../helpers/styleUtils';
+// import Modal from '../Modal/Modal';
+import DetailsPopup from '../DetailsPopup/DetailsPopup';
 
 const DashboardWrapper = styled(styleUtils.CenteredContent)`
 	position: relative;
@@ -25,7 +27,6 @@ const DashboardGrid = styled.div`
 	z-index: 2;
 	flex-grow: 2;
 	position: relative;
-	// padding: 0 15px;
 	@media screen and (min-width: 850px) {
 		max-height: 640px;
 		padding: 0 15px;
@@ -45,19 +46,23 @@ const MainContentWrapper = styled.div`
 
 const Dashboard = () => {
 	return (
-		<DashboardWrapper>
-			<Circles />
-			<BackgroundDots />
-			<DashboardGrid className='dashboardGrid'>
-				<Logo />
-				<MainContentWrapper className='mainContentWrapper'>
-					<DetailTiles />
-					<LaunchRocket />
-				</MainContentWrapper>
-			</DashboardGrid>
-			<div className='spacer' style={{ flexGrow: 1 }} />
-			<Footer />
-		</DashboardWrapper>
+		<>
+			<DashboardWrapper className='dashboardWrapper'>
+				<Circles />
+				<BackgroundDots />
+				<DashboardGrid className='dashboardGrid'>
+					<Logo />
+					<MainContentWrapper className='mainContentWrapper'>
+						<DetailTiles />
+						<LaunchRocket />
+					</MainContentWrapper>
+				</DashboardGrid>
+				<div className='spacer' style={{ flexGrow: 1 }} />
+				<Footer />
+				<DetailsPopup />
+			</DashboardWrapper>
+			{/* <Modal /> */}
+		</>
 	);
 };
 
