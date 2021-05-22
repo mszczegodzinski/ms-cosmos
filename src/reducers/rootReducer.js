@@ -27,49 +27,49 @@ const rootReducer = (state = initialState, action) => {
 		case ActionTypes.GET_CAPSULES_FAILED:
 			return {
 				...state,
-				capsulesData: [],
+				capsulesData: action.payload,
 				getCapsulesSuccesfully: false,
 				getCapsulesFailed: true,
 			};
 		case ActionTypes.GET_CREW_SUCCESSFULLY:
 			return {
 				...state,
-				// crewData: action.payload
+				crewData: action.payload,
 				getCrewSuccesfully: true,
 				getCrewFailed: false,
 			};
 		case ActionTypes.GET_CREW_FAILED:
 			return {
 				...state,
-				// crewData: action.payload
+				crewData: action.payload,
 				getCrewSuccesfully: false,
 				getCrewFailed: true,
 			};
 		case ActionTypes.GET_ROCKETS_SUCCESSFULLY:
 			return {
 				...state,
-				// rocketsData: action.payload
+				rocketsData: action.payload,
 				getRocketsSuccesfully: true,
 				getRocketsFailed: false,
 			};
 		case ActionTypes.GET_ROCKETS_FAILED:
 			return {
 				...state,
-				// rocketsData: action.payload
+				rocketsData: action.payload,
 				getRocketsSuccesfully: false,
 				getRocketsFailed: true,
 			};
 		case ActionTypes.GET_STARLINK_SUCCESSFULLY:
 			return {
 				...state,
-				// starlinkData: action.payload
+				starlinkData: action.payload,
 				getStarlinkSuccesfully: true,
 				getStarlinkFailed: false,
 			};
 		case ActionTypes.GET_STARLINK_FAILED:
 			return {
 				...state,
-				// starlinkData: action.payload
+				starlinkData: action.payload,
 				getStarlinkSuccesfully: false,
 				getStarlinkFailed: true,
 			};

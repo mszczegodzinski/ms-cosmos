@@ -20,6 +20,7 @@ export const getCapsuleData = () => (dispatch) => {
 			console.log(error);
 			dispatch({
 				type: ActionTypes.GET_CAPSULES_FAILED,
+				payload: [],
 			});
 		});
 };
@@ -36,12 +37,14 @@ export const getCrewData = () => (dispatch) => {
 			console.log(data);
 			dispatch({
 				type: ActionTypes.GET_CREW_SUCCESSFULLY,
+				payload: data,
 			});
 		})
 		.catch((error) => {
 			console.log(error);
 			dispatch({
 				type: ActionTypes.GET_CREW_FAILED,
+				payload: [],
 			});
 		});
 };
@@ -58,12 +61,14 @@ export const getRocketsData = () => (dispatch) => {
 			console.log(data);
 			dispatch({
 				type: ActionTypes.GET_ROCKETS_SUCCESSFULLY,
+				payload: data,
 			});
 		})
 		.catch((error) => {
 			console.log(error);
 			dispatch({
 				type: ActionTypes.GET_ROCKETS_FAILED,
+				payload: [],
 			});
 		});
 };
@@ -80,12 +85,14 @@ export const getStarlinkData = () => (dispatch) => {
 			console.log(data);
 			dispatch({
 				type: ActionTypes.GET_STARLINK_SUCCESSFULLY,
+				payload: data,
 			});
 		})
 		.catch((error) => {
 			console.log(error);
 			dispatch({
 				type: ActionTypes.GET_STARLINK_FAILED,
+				payload: [],
 			});
 		});
 };
