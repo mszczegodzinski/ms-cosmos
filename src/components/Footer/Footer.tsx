@@ -9,7 +9,7 @@ const StyledFooterWrapper = styled(styleUtils.CenteredContent)`
 
 const StyledFooter = styled.div`
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	justify-content: space-between;
 	width: 100%;
 	max-width: 1111px;
@@ -18,6 +18,9 @@ const StyledFooter = styled.div`
 	margin-bottom: 24px;
 	z-index: 2;
 	padding: 0 20px;
+	@media (min-width: 500px) {
+		flex-direction: row;
+	}
 	@media (min-width: 1200px) {
 		padding: 0;
 	}

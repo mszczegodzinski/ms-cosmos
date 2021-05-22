@@ -6,11 +6,17 @@ import Rocket from '../Rocket/Rocket';
 
 const PlanetWrapper = styled.div`
 	position: relative;
+	transform: scale(0.78);
+	@media screen and (min-width: 500px) {
+		transform: scale(1);
+	}
 `;
 
 const StyledPlanetImage = styled(styleUtils.CenteredContent)`
 	justify-content: flex-end;
-	padding-right: 25px;
+	@media screen and (min-width: 850px) {
+		padding-right: 25px;
+	}
 	@media screen and (min-width: 992px) {
 		padding-right: 70px;
 	}

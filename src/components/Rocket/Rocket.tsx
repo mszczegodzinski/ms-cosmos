@@ -34,7 +34,12 @@ const StyledSmokeRight = styled.div`
 const StyledCompleteRocket = styled.div`
 	position: absolute;
 	width: 100%;
-	right: -45px;
+	right: -70px;
+	z-index: 2;
+	@media screen and (min-width: 850px) {
+		right: -45px;
+		padding-right: 25px;
+	}
 	@media screen and (min-width: 992px) {
 		right: 0;
 	}
@@ -42,7 +47,7 @@ const StyledCompleteRocket = styled.div`
 
 const Rocket = () => {
 	return (
-		<StyledCompleteRocket>
+		<StyledCompleteRocket className='completeRocket'>
 			<StyledSmokeLeft className='smokeLeft'>
 				<img src={SmokeLeft} alt='smoke left' />
 			</StyledSmokeLeft>
