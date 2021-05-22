@@ -5,7 +5,7 @@ import Logo from '../Logo/Logo';
 import Circles from '../Circle/Circles';
 import BackgroundDots from '../BackgroundDots/BackgroundDots';
 import LaunchRocket from '../LaunchRocket/LaunchRocket';
-import DetailsTile from '../DetailsTile/DetailsTile';
+import DetailTiles from '../DetailTiles/DetailTiles';
 import styleUtils from '../../helpers/styleUtils';
 
 const DashboardWrapper = styled(styleUtils.CenteredContent)`
@@ -20,14 +20,13 @@ const DashboardGrid = styled.div`
 	max-width: 1140px;
 	max-height: 640px;
 	z-index: 2;
-	border: 1px solid white;
 	flex-grow: 2;
 	position: relative;
+	padding: 0 15px;
 `;
 
 const MainContentWrapper = styled.div`
 	display: flex;
-	padding-bottom: 32px;
 	flex-direction: row;
 	height: calc(100% - 60px);
 	max-height: 580px;
@@ -41,7 +40,7 @@ const Dashboard = () => {
 			<DashboardGrid className='dashboardGrid'>
 				<Logo />
 				<MainContentWrapper className='mainContentWrapper'>
-					<DetailsTile />
+					<DetailTiles />
 					<LaunchRocket />
 				</MainContentWrapper>
 			</DashboardGrid>

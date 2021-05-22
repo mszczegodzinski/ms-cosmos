@@ -10,7 +10,10 @@ const PlanetWrapper = styled.div`
 
 const StyledPlanetImage = styled(styleUtils.CenteredContent)`
 	justify-content: flex-end;
-	padding-right: 70px;
+	padding-right: 25px;
+	@media screen and (min-width: 992px) {
+		padding-right: 70px;
+	}
 `;
 
 const Planet = () => {

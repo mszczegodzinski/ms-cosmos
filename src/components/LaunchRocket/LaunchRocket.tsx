@@ -9,7 +9,7 @@ const LaunchRocketWrapper = styled(styleUtils.CenteredContent)`
 	align-items: flex-end;
 	width: 50%;
 	height: 100%;
-	padding: 0 15px;
+	padding-bottom: 32px;
 `;
 
 const LaunchRocket = () => {
