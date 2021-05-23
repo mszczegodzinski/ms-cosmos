@@ -4,9 +4,10 @@ import styled from 'styled-components';
 import styleUtils from '../../helpers/styleUtils';
 import { TypographyRegular14, TypographyH200 } from '../Typography/Typography';
 import UnsortedIcon from '../../assets/icons/unsort icon.svg';
-// import UnsortedIcon from '../../assets/icons/unsort icon white.svg';
 import SortAscIcon from '../../assets/icons/sort asc icon.svg';
 import SortDescIcon from '../../assets/icons/sort desc icon.svg';
+import ErrorComponent from '../ErrorComponent/ErrorComponent';
+import ErrorText from '../ErrorComponent/ErrorText';
 
 const HeaderCell = styled.div`
 	width: 50%;
@@ -82,20 +83,33 @@ interface DetailsTableProps {
 	rocketsData: Object[];
 	starlinkData: Object[];
 	modalTitle: string;
-	getCapsulesSuccesfully: boolean;
-	getCrewSuccesfully: boolean;
-	getRocketsSuccesfully: boolean;
-	getStarlinkSuccesfully: boolean;
+	getCapsulesSuccessfully: boolean;
+	getCrewSuccessfully: boolean;
+	getRocketsSuccessfully: boolean;
+	getStarlinkSuccessfully: boolean;
 	currentHeaders: string[];
 	// currentVisibleData: any[];
 	currentDisplayData: any[];
+	getCapsulesFailed: boolean;
+	getCrewFailed: boolean;
+	getRocketsFailed: boolean;
+	getStarlinkFailed: boolean;
 }
 
-const DetailsTable = ({ modalTitle, currentHeaders, currentDisplayData }: DetailsTableProps) => {
+const DetailsTable = ({
+	modalTitle,
+	currentHeaders,
+	currentDisplayData,
+	getCapsulesFailed,
+	getCrewFailed,
+	getRocketsFailed,
+	getStarlinkFailed,
+}: DetailsTableProps) => {
 	const [localDisplayData, setLocalDisplayData] = useState(currentDisplayData);
 	const [updateData, setUpdateData] = useState(false);
 	const [leftColumnSorted, setLeftColumnSorted] = useState(null);
 	const [rightColumnSorted, setRightColumnSorted] = useState(null);
+	const [fetchError, setFetchError] = useState(false);
 
 	useEffect(() => {
 		setLocalDisplayData(currentDisplayData);
@@ -111,6 +125,13 @@ const DetailsTable = ({ modalTitle, currentHeaders, currentDisplayData }: Detail
 		setLeftColumnSorted(null);
 		setRightColumnSorted(null);
 	}, [modalTitle]);
+
+	useEffect(() => {
+		if (getCapsulesFailed || getCrewFailed || getRocketsFailed || getStarlinkFailed) {
+			return setFetchError(true);
+		}
+		return setFetchError(false);
+	}, [getCapsulesFailed, getCrewFailed, getRocketsFailed, getStarlinkFailed]);
 
 	const compareRightHeader = (a: string, b: string): number => {
 		// first and second element to compare:
@@ -257,22 +278,35 @@ const DetailsTable = ({ modalTitle, currentHeaders, currentDisplayData }: Detail
 		});
 		return result;
 	};
-
-	return (
-		<TableWrapper>
-			<Row>
-				<HeaderCell className='tableHeaderLeft' onClick={handleLeftHeaderClick}>
-					<TypographyH200 color='#A094C6'>{currentHeaders[0]}</TypographyH200>
-					<TypographyH200 color='#A094C6'>{renderLeftSortIcon()}</TypographyH200>
-				</HeaderCell>
-				<HeaderCell className='tableHeaderRight' onClick={handleRightHeaderClick}>
-					<TypographyH200 color='#A094C6'>{currentHeaders[1]}</TypographyH200>
-					<TypographyH200 color='#A094C6'>{renderRightSortIcon()}</TypographyH200>
-				</HeaderCell>
-			</Row>
-			{renderBodyTable()}
-		</TableWrapper>
-	);
+	try {
+		return (
+			<ErrorComponent message='Fetched data failed. Try again.' Children>
+				<TableWrapper>
+					{fetchError ? (
+						<div style={{ paddingTop: '100px' }}>
+							<ErrorText message='Fetched data failed. Try again.' />
+						</div>
+					) : (
+						<>
+							<Row>
+								<HeaderCell className='tableHeaderLeft' onClick={handleLeftHeaderClick}>
+									<TypographyH200 color='#A094C6'>{currentHeaders[0]}</TypographyH200>
+									<TypographyH200 color='#A094C6'>{renderLeftSortIcon()}</TypographyH200>
+								</HeaderCell>
+								<HeaderCell className='tableHeaderRight' onClick={handleRightHeaderClick}>
+									<TypographyH200 color='#A094C6'>{currentHeaders[1]}</TypographyH200>
+									<TypographyH200 color='#A094C6'>{renderRightSortIcon()}</TypographyH200>
+								</HeaderCell>
+							</Row>
+							{renderBodyTable()}
+						</>
+					)}
+				</TableWrapper>
+			</ErrorComponent>
+		);
+	} catch (error) {
+		return <ErrorText message='Fetched data failed. Try again.' />;
+	}
 };
 
 const mapStateToProps = (state) => {
@@ -282,10 +316,14 @@ const mapStateToProps = (state) => {
 		rocketsData: state.rocketsData,
 		starlinkData: state.starlinkData,
 		modalTitle: state.modalTitle,
-		getCapsulesSuccesfully: state.getCapsulesSuccesfully,
-		getCrewSuccesfully: state.getCrewSuccesfully,
-		getRocketsSuccesfully: state.getRocketsSuccesfully,
-		getStarlinkSuccesfully: state.getStarlinkSuccesfully,
+		getCapsulesSuccessfully: state.getCapsulesSuccessfully,
+		getCrewSuccessfully: state.getCrewSuccessfully,
+		getRocketsSuccessfully: state.getRocketsSuccessfully,
+		getStarlinkSuccessfully: state.getStarlinkSuccessfully,
+		getCapsulesFailed: state.getCapsulesFailed,
+		getCrewFailed: state.getCrewFailed,
+		getRocketsFailed: state.getRocketsFailed,
+		getStarlinkFailed: state.getStarlinkFailed,
 	};
 };
 

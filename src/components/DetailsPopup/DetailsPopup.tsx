@@ -33,6 +33,7 @@ const ModalConent = styled(styleUtils.CenteredContent)<{ isModalVisible: boolean
 	z-index: 5;
 	display: ${(props) => (props.isModalVisible ? 'flex' : 'none')};
 	justify-content: flex-start;
+	overflow-y: auto;
 `;
 
 const CloseModalButton = styled.button`
@@ -80,10 +81,10 @@ interface DetailsPopupProps {
 	crewData: Object[];
 	rocketsData: Object[];
 	starlinkData: Object[];
-	getCapsulesSuccesfully: boolean;
-	getCrewSuccesfully: boolean;
-	getRocketsSuccesfully: boolean;
-	getStarlinkSuccesfully: boolean;
+	getCapsulesSuccessfully: boolean;
+	getCrewSuccessfully: boolean;
+	getRocketsSuccessfully: boolean;
+	getStarlinkSuccessfully: boolean;
 	isLoaderRender: boolean;
 }
 
@@ -96,10 +97,10 @@ const DetailsPopup = ({
 	crewData,
 	rocketsData,
 	starlinkData,
-	getCapsulesSuccesfully,
-	getCrewSuccesfully,
-	getRocketsSuccesfully,
-	getStarlinkSuccesfully,
+	getCapsulesSuccessfully,
+	getCrewSuccessfully,
+	getRocketsSuccessfully,
+	getStarlinkSuccessfully,
 	isLoaderRender,
 }: DetailsPopupProps) => {
 	const [currentDisplayData, setCurrentDisplayData] = useState<any[]>([]);
@@ -113,7 +114,7 @@ const DetailsPopup = ({
 	};
 
 	useEffect(() => {
-		if (!getCapsulesSuccesfully && !getCrewSuccesfully && !getRocketsSuccesfully && !getStarlinkSuccesfully) {
+		if (!getCapsulesSuccessfully && !getCrewSuccessfully && !getRocketsSuccessfully && !getStarlinkSuccessfully) {
 			setCurrentHeaders([]);
 			return setCurrentDisplayData([]);
 		}
@@ -133,7 +134,7 @@ const DetailsPopup = ({
 			setCurrentHeaders(['OBJECT_NAME', 'OBJECT_ID']);
 			return setCurrentDisplayData(starlinkData);
 		}
-	}, [getCapsulesSuccesfully, getCrewSuccesfully, getRocketsSuccesfully, getStarlinkSuccesfully]);
+	}, [getCapsulesSuccessfully, getCrewSuccessfully, getRocketsSuccessfully, getStarlinkSuccessfully]);
 
 	return (
 		<ModalContentWrapper className='detailsPopupWrapper'>
@@ -178,10 +179,10 @@ const mapStateToProps = (state) => {
 		crewData: state.crewData,
 		rocketsData: state.rocketsData,
 		starlinkData: state.starlinkData,
-		getCapsulesSuccesfully: state.getCapsulesSuccesfully,
-		getCrewSuccesfully: state.getCrewSuccesfully,
-		getRocketsSuccesfully: state.getRocketsSuccesfully,
-		getStarlinkSuccesfully: state.getStarlinkSuccesfully,
+		getCapsulesSuccessfully: state.getCapsulesSuccessfully,
+		getCrewSuccessfully: state.getCrewSuccessfully,
+		getRocketsSuccessfully: state.getRocketsSuccessfully,
+		getStarlinkSuccessfully: state.getStarlinkSuccessfully,
 		isLoaderRender: state.isLoaderRender,
 	};
 };

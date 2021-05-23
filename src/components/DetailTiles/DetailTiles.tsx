@@ -111,13 +111,13 @@ const DetailTiles = ({
 
 const mapStateToProps = (state) => {
 	return {
-		getCapsulesSuccesfully: state.getCapsulesSuccesfully,
+		getCapsulesSuccessfully: state.getCapsulesSuccessfully,
 		getCapsulesFailed: state.getCapsulesFailed,
-		getCrewSuccesfully: state.getCrewSuccesfully,
+		getCrewSuccessfully: state.getCrewSuccessfully,
 		getCrewFailed: state.getCrewFailed,
-		getRocketsSuccesfully: state.getRocketsSuccesfully,
+		getRocketsSuccessfully: state.getRocketsSuccessfully,
 		getRocketsFailed: state.getRocketsFailed,
-		getStarlinkSuccesfully: state.getStarlinkSuccesfully,
+		getStarlinkSuccessfully: state.getStarlinkSuccessfully,
 		getStarlinkFailed: state.getStarlinkFailed,
 	};
 };

@@ -5,13 +5,13 @@ const initialState = {
 	crewData: [],
 	rocketsData: [],
 	starlinkData: [],
-	getCapsulesSuccesfully: false,
+	getCapsulesSuccessfully: false,
 	getCapsulesFailed: false,
-	getCrewSuccesfully: false,
+	getCrewSuccessfully: false,
 	getCrewFailed: false,
-	getRocketsSuccesfully: false,
+	getRocketsSuccessfully: false,
 	getRocketsFailed: false,
-	getStarlinkSuccesfully: false,
+	getStarlinkSuccessfully: false,
 	getStarlinkFailed: false,
 	isModalVisible: false,
 	modalTitle: '',
@@ -24,56 +24,56 @@ const rootReducer = (state = initialState, action) => {
 			return {
 				...state,
 				capsulesData: action.payload,
-				getCapsulesSuccesfully: true,
+				getCapsulesSuccessfully: true,
 				getCapsulesFailed: false,
 			};
 		case ActionTypes.GET_CAPSULES_FAILED:
 			return {
 				...state,
 				capsulesData: action.payload,
-				getCapsulesSuccesfully: false,
+				getCapsulesSuccessfully: false,
 				getCapsulesFailed: true,
 			};
 		case ActionTypes.GET_CREW_SUCCESSFULLY:
 			return {
 				...state,
 				crewData: action.payload,
-				getCrewSuccesfully: true,
+				getCrewSuccessfully: true,
 				getCrewFailed: false,
 			};
 		case ActionTypes.GET_CREW_FAILED:
 			return {
 				...state,
 				crewData: action.payload,
-				getCrewSuccesfully: false,
+				getCrewSuccessfully: false,
 				getCrewFailed: true,
 			};
 		case ActionTypes.GET_ROCKETS_SUCCESSFULLY:
 			return {
 				...state,
 				rocketsData: action.payload,
-				getRocketsSuccesfully: true,
+				getRocketsSuccessfully: true,
 				getRocketsFailed: false,
 			};
 		case ActionTypes.GET_ROCKETS_FAILED:
 			return {
 				...state,
 				rocketsData: action.payload,
-				getRocketsSuccesfully: false,
+				getRocketsSuccessfully: false,
 				getRocketsFailed: true,
 			};
 		case ActionTypes.GET_STARLINK_SUCCESSFULLY:
 			return {
 				...state,
 				starlinkData: action.payload,
-				getStarlinkSuccesfully: true,
+				getStarlinkSuccessfully: true,
 				getStarlinkFailed: false,
 			};
 		case ActionTypes.GET_STARLINK_FAILED:
 			return {
 				...state,
 				starlinkData: action.payload,
-				getStarlinkSuccesfully: false,
+				getStarlinkSuccessfully: false,
 				getStarlinkFailed: true,
 			};
 		case ActionTypes.SHOW_MODAL:
@@ -89,13 +89,13 @@ const rootReducer = (state = initialState, action) => {
 		case ActionTypes.RESET_FETCH_STATES:
 			return {
 				...state,
-				getCapsulesSuccesfully: false,
+				getCapsulesSuccessfully: false,
 				getCapsulesFailed: false,
-				getCrewSuccesfully: false,
+				getCrewSuccessfully: false,
 				getCrewFailed: false,
-				getRocketsSuccesfully: false,
+				getRocketsSuccessfully: false,
 				getRocketsFailed: false,
-				getStarlinkSuccesfully: false,
+				getStarlinkSuccessfully: false,
 				getStarlinkFailed: false,
 				capsulesData: [],
 				crewData: [],
