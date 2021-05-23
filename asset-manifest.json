@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/ms-cosmos/static/css/main.1721da93.chunk.css",
-    "main.js": "/ms-cosmos/static/js/main.23d0fd17.chunk.js",
-    "main.js.map": "/ms-cosmos/static/js/main.23d0fd17.chunk.js.map",
+    "main.css": "/ms-cosmos/static/css/main.394c2e19.chunk.css",
+    "main.js": "/ms-cosmos/static/js/main.fb8f0174.chunk.js",
+    "main.js.map": "/ms-cosmos/static/js/main.fb8f0174.chunk.js.map",
     "runtime-main.js": "/ms-cosmos/static/js/runtime-main.c361bf3b.js",
     "runtime-main.js.map": "/ms-cosmos/static/js/runtime-main.c361bf3b.js.map",
-    "static/js/2.19bc0d10.chunk.js": "/ms-cosmos/static/js/2.19bc0d10.chunk.js",
-    "static/js/2.19bc0d10.chunk.js.map": "/ms-cosmos/static/js/2.19bc0d10.chunk.js.map",
+    "static/js/2.eb45770c.chunk.js": "/ms-cosmos/static/js/2.eb45770c.chunk.js",
+    "static/js/2.eb45770c.chunk.js.map": "/ms-cosmos/static/js/2.eb45770c.chunk.js.map",
     "index.html": "/ms-cosmos/index.html",
-    "static/css/main.1721da93.chunk.css.map": "/ms-cosmos/static/css/main.1721da93.chunk.css.map",
-    "static/js/2.19bc0d10.chunk.js.LICENSE.txt": "/ms-cosmos/static/js/2.19bc0d10.chunk.js.LICENSE.txt",
+    "static/css/main.394c2e19.chunk.css.map": "/ms-cosmos/static/css/main.394c2e19.chunk.css.map",
+    "static/js/2.eb45770c.chunk.js.LICENSE.txt": "/ms-cosmos/static/js/2.eb45770c.chunk.js.LICENSE.txt",
     "static/media/CircleLeft.1b631783.svg": "/ms-cosmos/static/media/CircleLeft.1b631783.svg",
     "static/media/CircleRight.06db1f7b.svg": "/ms-cosmos/static/media/CircleRight.06db1f7b.svg",
     "static/media/Image 1.b8d30492.png": "/ms-cosmos/static/media/Image 1.b8d30492.png",
@@ -26,8 +26,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.c361bf3b.js",
-    "static/js/2.19bc0d10.chunk.js",
-    "static/css/main.1721da93.chunk.css",
-    "static/js/main.23d0fd17.chunk.js"
+    "static/js/2.eb45770c.chunk.js",
+    "static/css/main.394c2e19.chunk.css",
+    "static/js/main.fb8f0174.chunk.js"
   ]
 }
