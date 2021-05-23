@@ -13,6 +13,8 @@ const initialState = {
 	getRocketsFailed: false,
 	getStarlinkSuccesfully: false,
 	getStarlinkFailed: false,
+	isModalVisible: false,
+	modalTitle: '',
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -72,6 +74,32 @@ const rootReducer = (state = initialState, action) => {
 				starlinkData: action.payload,
 				getStarlinkSuccesfully: false,
 				getStarlinkFailed: true,
+			};
+		case ActionTypes.SHOW_MODAL:
+			return {
+				...state,
+				isModalVisible: action.payload,
+			};
+		case ActionTypes.SET_CURRENT_POPUP_TITLE:
+			return {
+				...state,
+				modalTitle: action.payload,
+			};
+		case ActionTypes.RESET_FETCH_STATES:
+			return {
+				...state,
+				getCapsulesSuccesfully: false,
+				getCapsulesFailed: false,
+				getCrewSuccesfully: false,
+				getCrewFailed: false,
+				getRocketsSuccesfully: false,
+				getRocketsFailed: false,
+				getStarlinkSuccesfully: false,
+				getStarlinkFailed: false,
+				capsulesData: [],
+				crewData: [],
+				rocketsData: [],
+				starlinkData: [],
 			};
 		default:
 			return state;

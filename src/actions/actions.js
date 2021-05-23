@@ -96,3 +96,30 @@ export const getStarlinkData = () => (dispatch) => {
 			});
 		});
 };
+
+export const showModal = (isVisible) => (dispatch) => {
+	dispatch({
+		type: ActionTypes.SHOW_MODAL,
+		payload: isVisible,
+	});
+};
+
+export const setCurrentPopupTitle = (title) => (dispatch) => {
+	dispatch({
+		type: ActionTypes.SET_CURRENT_POPUP_TITLE,
+		payload: title,
+	});
+};
+
+export const clearStoredData = () => (dispatch) => {
+	// dispatch({
+	// 	type: ActionTypes.SET_CURRENT_POPUP_TITLE,
+	// 	payload: title,
+	// });
+};
+
+export const resetFetchStates = () => (dispatch) => {
+	dispatch({
+		type: ActionTypes.RESET_FETCH_STATES,
+	});
+};

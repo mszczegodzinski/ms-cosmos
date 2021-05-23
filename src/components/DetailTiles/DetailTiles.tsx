@@ -6,7 +6,14 @@ import CapsulesImage from '../../assets/images/Image 4.png';
 import CrewImage from '../../assets/images/Image 1.png';
 import RocketsImage from '../../assets/images/Image 2.png';
 import StarlinkImage from '../../assets/images/Image 3.png';
-import { getCapsuleData, getCrewData, getRocketsData, getStarlinkData } from '../../actions/actions';
+import {
+	getCapsuleData,
+	getCrewData,
+	getRocketsData,
+	getStarlinkData,
+	showModal,
+	setCurrentPopupTitle,
+} from '../../actions/actions';
 import { connect } from 'react-redux';
 
 const DetailTilesWrapper = styled(styleUtils.CenteredContent)`
@@ -27,14 +34,26 @@ const DetailTilesWrapper = styled(styleUtils.CenteredContent)`
 	}
 `;
 
-const DetailsTile = ({ getCapsuleData, getCrewData, getRocketsData, getStarlinkData }) => {
-	const [isSmallScreen, setIsSmallScreen] = useState<boolean>(false);
-	const [isCapsulesTileClicked, setIsCapsuleTileClicked] = useState(false);
-	const [isCrewTileClicked, setIsCrewTileClicked] = useState(false);
-	const [isRocketsTileClicked, setIRocketsTileClicked] = useState(false);
-	const [isStarlinkTileClicked, setIsStarlinkTileClicked] = useState(false);
+interface DetailsTileProps {
+	getCapsuleData: () => void;
+	getCrewData: () => void;
+	getRocketsData: () => void;
+	getStarlinkData: () => void;
+	showModal: (isVisible: boolean) => void;
+	setCurrentPopupTitle: (title: string) => void;
+}
 
-	const checkIfScreenIsSmall = (e: UIEvent) => {
+const DetailsTile = ({
+	getCapsuleData,
+	getCrewData,
+	getRocketsData,
+	getStarlinkData,
+	showModal,
+	setCurrentPopupTitle,
+}: DetailsTileProps) => {
+	const [isSmallScreen, setIsSmallScreen] = useState<boolean>(false);
+
+	const checkIfScreenIsSmall = (e: UIEvent): void => {
 		const currentTarget = e.target as Window;
 		if (currentTarget.innerWidth < 500 && !isSmallScreen) {
 			setIsSmallScreen(true);
@@ -44,21 +63,25 @@ const DetailsTile = ({ getCapsuleData, getCrewData, getRocketsData, getStarlinkD
 		}
 	};
 
-	const handleTileClick = (e) => {
-		const currentTileId = e.target.id;
-		if (currentTileId === 'capsules') {
+	const handleTileClick = (e: MouseEvent): void => {
+		const currentTileId = (e.target as HTMLDivElement).id;
+		const currentIdLowerCase = currentTileId.toLowerCase();
+		showModal(true);
+		setCurrentPopupTitle(currentTileId);
+		console.log(currentTileId);
+		if (currentIdLowerCase === 'capsules') {
 			console.log(currentTileId);
 			getCapsuleData();
 		}
-		if (currentTileId === 'crew') {
+		if (currentIdLowerCase === 'crew') {
 			console.log(currentTileId);
 			getCrewData();
 		}
-		if (currentTileId === 'rockets') {
+		if (currentIdLowerCase === 'rockets') {
 			console.log(currentTileId);
 			getRocketsData();
 		}
-		if (currentTileId === 'starlink') {
+		if (currentIdLowerCase === 'starlink') {
 			console.log(currentTileId);
 			getStarlinkData();
 		}
@@ -70,14 +93,7 @@ const DetailsTile = ({ getCapsuleData, getCrewData, getRocketsData, getStarlinkD
 		}
 		// add listeners to window and tiles:
 		window.addEventListener('resize', checkIfScreenIsSmall);
-		const capsuleTile = document.querySelector('.capsules')!;
-		const crewTile = document.querySelector('.crew')!;
-		const rocketsTile = document.querySelector('.rockets')!;
-		const starlinkTile = document.querySelector('.starlink')!;
-		capsuleTile.addEventListener('click', handleTileClick);
-		crewTile.addEventListener('click', handleTileClick);
-		rocketsTile.addEventListener('click', handleTileClick);
-		starlinkTile.addEventListener('click', handleTileClick);
+
 		// stop propagation for title elements:
 		const titles = document.querySelectorAll('.title');
 		titles.forEach((title) => {
@@ -85,10 +101,6 @@ const DetailsTile = ({ getCapsuleData, getCrewData, getRocketsData, getStarlinkD
 		});
 		return () => {
 			window.removeEventListener('resize', checkIfScreenIsSmall);
-			capsuleTile.removeEventListener('click', handleTileClick);
-			crewTile.removeEventListener('click', handleTileClick);
-			rocketsTile.removeEventListener('click', handleTileClick);
-			starlinkTile.removeEventListener('click', handleTileClick);
 			titles.forEach((title) => {
 				title.removeEventListener('click', (e) => e.stopPropagation());
 			});
@@ -96,14 +108,14 @@ const DetailsTile = ({ getCapsuleData, getCrewData, getRocketsData, getStarlinkD
 	}, [isSmallScreen]);
 
 	return (
-		<DetailTilesWrapper>
+		<DetailTilesWrapper onClick={handleTileClick}>
 			<div style={{ marginRight: isSmallScreen ? '0' : '30px' }}>
-				<DetailTile className='capsules' title='Capsules' image={CapsulesImage} alt='' />
-				<DetailTile className='rockets' title='Rockets' image={RocketsImage} alt='' />
+				<DetailTile className='capsules' title='Capsules' image={CapsulesImage} />
+				<DetailTile className='rockets' title='Rockets' image={RocketsImage} />
 			</div>
 			<div>
-				<DetailTile className='crew' title='Crew' image={CrewImage} alt='' />
-				<DetailTile className='starlink' title='Starlink' image={StarlinkImage} alt='' />
+				<DetailTile className='crew' title='Crew' image={CrewImage} />
+				<DetailTile className='starlink' title='Starlink' image={StarlinkImage} />
 			</div>
 		</DetailTilesWrapper>
 	);
@@ -127,6 +139,8 @@ const actions = {
 	getCrewData,
 	getRocketsData,
 	getStarlinkData,
+	showModal,
+	setCurrentPopupTitle,
 };
 
 export default connect(mapStateToProps, actions)(DetailsTile);

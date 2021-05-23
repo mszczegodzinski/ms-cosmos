@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, ReactNode, RefObject } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { TypographyH200 } from '../Typography/Typography';
 
@@ -13,6 +13,7 @@ const DetailTileWrapper = styled.div<{ image: string }>`
 	background-size: contain;
 	border-radius: 16px;
 	transition: 0.3s;
+	cursor: pointer;
 	&:hover {
 		background: linear-gradient(0deg, rgba(43, 34, 74, 0.92) 7.69%, rgba(70, 58, 113, 0.92) 100%),
 			url('${(props) => props.image}');
@@ -31,19 +32,15 @@ const StyledTitle = styled.div`
 	text-align: center;
 `;
 
-interface DetailTile {
+interface DetailTileProps {
 	title: string;
 	image: string;
-	alt: string;
 	className: string;
 }
 
-const DetailsTile = ({ title, image, alt, className }: DetailTile) => {
-	const [tileTitle, setTileTitle] = useState<string>(title);
-	useEffect(() => {}, [tileTitle]);
-
+const DetailsTile = ({ title, image, className }: DetailTileProps) => {
 	return (
-		<DetailTileWrapper id={`${title.toLowerCase()}`} image={image} className={className}>
+		<DetailTileWrapper id={`${title}`} image={image} className={`${className} pointer`}>
 			<StyledTitle className='title'>
 				<TypographyH200>{title}</TypographyH200>
 			</StyledTitle>
