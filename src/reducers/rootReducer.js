@@ -15,6 +15,7 @@ const initialState = {
 	getStarlinkFailed: false,
 	isModalVisible: false,
 	modalTitle: '',
+	isLoaderRender: false,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -100,6 +101,11 @@ const rootReducer = (state = initialState, action) => {
 				crewData: [],
 				rocketsData: [],
 				starlinkData: [],
+			};
+		case ActionTypes.SHOW_LOADER:
+			return {
+				...state,
+				isLoaderRender: action.payload,
 			};
 		default:
 			return state;

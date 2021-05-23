@@ -8,7 +8,6 @@ import LaunchRocket from '../LaunchRocket/LaunchRocket';
 import DetailTiles from '../DetailTiles/DetailTiles';
 import styleUtils from '../../helpers/styleUtils';
 import DetailsPopup from '../DetailsPopup/DetailsPopup';
-import { connect } from 'react-redux';
 
 const DashboardWrapper = styled(styleUtils.CenteredContent)`
 	position: relative;
@@ -40,12 +39,9 @@ const MainContentWrapper = styled.div`
 	max-height: auto;
 	@media screen and (min-width: 850px) {
 		flex-direction: row;
-		// flex-direction: column;
 		max-height: 580px;
 	}
 `;
-
-interface DashboardProps {}
 
 const Dashboard = () => {
 	return (
@@ -68,12 +64,4 @@ const Dashboard = () => {
 	);
 };
 
-const mapStateToProps = (state) => {
-	return {
-		isModalVisible: state.isModalVisible,
-	};
-};
-
-const actions = {};
-
-export default connect(mapStateToProps, actions)(Dashboard);
+export default Dashboard;

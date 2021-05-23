@@ -7,6 +7,7 @@ import { showModal, resetFetchStates } from '../../actions/actions';
 import { createRipples } from 'react-ripples';
 import { TypographyModalTitle, TypographyRegular14 } from '../Typography/Typography';
 import DetailsTable from '../DetailsTable/DetailsTable';
+import Loader from '../Loader/Loader';
 
 const CustomRipples = createRipples({
 	color: 'rgba(255,255,255,0.5)',
@@ -22,7 +23,7 @@ const ModalContentWrapper = styled(styleUtils.CenteredContent)`
 	padding: 20px;
 `;
 
-const ModalConent = styled(styleUtils.CenteredContent)<{ isModalVisible: boolean }>`
+const ModalConent = styled(styleUtils.CenteredContent)<{ isModalVisible: boolean; isLoaderRender: boolean }>`
 	position: fixed;
 	width: 90%;
 	max-width: 540px;
@@ -70,10 +71,6 @@ const PopupHeader = styled.div`
 	border-radius: 5px;
 `;
 
-const PopupDataWrapper = styled(styleUtils.CenteredContent)`
-	// flex-grow: 1;
-`;
-
 interface DetailsPopupProps {
 	isModalVisible: boolean;
 	modalTitle: string;
@@ -87,6 +84,7 @@ interface DetailsPopupProps {
 	getCrewSuccesfully: boolean;
 	getRocketsSuccesfully: boolean;
 	getStarlinkSuccesfully: boolean;
+	isLoaderRender: boolean;
 }
 
 const DetailsPopup = ({
@@ -102,10 +100,11 @@ const DetailsPopup = ({
 	getCrewSuccesfully,
 	getRocketsSuccesfully,
 	getStarlinkSuccesfully,
+	isLoaderRender,
 }: DetailsPopupProps) => {
 	const [currentDisplayData, setCurrentDisplayData] = useState<any[]>([]);
 	const [currentHeaders, setCurrentHeaders] = useState<string[]>([]);
-	const [currentVisibleData, setCurrentVisibleData] = useState<any[]>([]);
+	// const [currentVisibleData, setCurrentVisibleData] = useState<any[]>([]);
 	const handleClosePopup = () => {
 		setTimeout(() => {
 			showModal(false);
@@ -114,6 +113,10 @@ const DetailsPopup = ({
 	};
 
 	useEffect(() => {
+		if (!getCapsulesSuccesfully && !getCrewSuccesfully && !getRocketsSuccesfully && !getStarlinkSuccesfully) {
+			setCurrentHeaders([]);
+			return setCurrentDisplayData([]);
+		}
 		if (modalTitle === 'Capsules') {
 			setCurrentHeaders(['Type', 'Status']);
 			return setCurrentDisplayData(capsulesData);
@@ -134,7 +137,7 @@ const DetailsPopup = ({
 
 	return (
 		<ModalContentWrapper className='detailsPopupWrapper'>
-			<ModalConent isModalVisible={isModalVisible} className='modalContent'>
+			<ModalConent isLoaderRender={isLoaderRender} isModalVisible={isModalVisible} className='modalContent'>
 				<PopupHeader className='popupHeader'>
 					<div>
 						<TypographyModalTitle>{modalTitle}</TypographyModalTitle>
@@ -148,17 +151,20 @@ const DetailsPopup = ({
 					<div style={{ borderRadius: '5px', overflow: 'hidden' }}>
 						<CustomRipples>
 							<CloseModalButton onClick={handleClosePopup}>
-								<img src={CloseIcon} />
+								<img src={CloseIcon} alt='close button icon' />
 							</CloseModalButton>
 						</CustomRipples>
 					</div>
 				</PopupHeader>
-				<DetailsTable
-					currentHeaders={currentHeaders}
-					currentDisplayData={currentDisplayData}
-					currentVisibleData={currentVisibleData}
-				/>
-				<PopupDataWrapper></PopupDataWrapper>
+				{isLoaderRender ? (
+					<Loader />
+				) : (
+					<DetailsTable
+						currentHeaders={currentHeaders}
+						currentDisplayData={currentDisplayData}
+						// currentVisibleData={currentVisibleData}
+					/>
+				)}
 			</ModalConent>
 		</ModalContentWrapper>
 	);
@@ -176,6 +182,7 @@ const mapStateToProps = (state) => {
 		getCrewSuccesfully: state.getCrewSuccesfully,
 		getRocketsSuccesfully: state.getRocketsSuccesfully,
 		getStarlinkSuccesfully: state.getStarlinkSuccesfully,
+		isLoaderRender: state.isLoaderRender,
 	};
 };
 

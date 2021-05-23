@@ -87,7 +87,7 @@ interface DetailsTableProps {
 	getRocketsSuccesfully: boolean;
 	getStarlinkSuccesfully: boolean;
 	currentHeaders: string[];
-	currentVisibleData: any[];
+	// currentVisibleData: any[];
 	currentDisplayData: any[];
 }
 
