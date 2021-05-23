@@ -43,7 +43,7 @@ interface DetailsTileProps {
 	setCurrentPopupTitle: (title: string) => void;
 }
 
-const DetailsTile = ({
+const DetailTiles = ({
 	getCapsuleData,
 	getCrewData,
 	getRocketsData,
@@ -68,23 +68,11 @@ const DetailsTile = ({
 		const currentIdLowerCase = currentTileId.toLowerCase();
 		showModal(true);
 		setCurrentPopupTitle(currentTileId);
-		console.log(currentTileId);
-		if (currentIdLowerCase === 'capsules') {
-			console.log(currentTileId);
-			getCapsuleData();
-		}
-		if (currentIdLowerCase === 'crew') {
-			console.log(currentTileId);
-			getCrewData();
-		}
-		if (currentIdLowerCase === 'rockets') {
-			console.log(currentTileId);
-			getRocketsData();
-		}
-		if (currentIdLowerCase === 'starlink') {
-			console.log(currentTileId);
-			getStarlinkData();
-		}
+
+		if (currentIdLowerCase === 'capsules') return getCapsuleData();
+		if (currentIdLowerCase === 'crew') return getCrewData();
+		if (currentIdLowerCase === 'rockets') return getRocketsData();
+		if (currentIdLowerCase === 'starlink') return getStarlinkData();
 	};
 
 	useEffect(() => {
@@ -108,14 +96,14 @@ const DetailsTile = ({
 	}, [isSmallScreen]);
 
 	return (
-		<DetailTilesWrapper onClick={handleTileClick}>
+		<DetailTilesWrapper>
 			<div style={{ marginRight: isSmallScreen ? '0' : '30px' }}>
-				<DetailTile className='capsules' title='Capsules' image={CapsulesImage} />
-				<DetailTile className='rockets' title='Rockets' image={RocketsImage} />
+				<DetailTile handleTileClick={handleTileClick} className='capsules' title='Capsules' image={CapsulesImage} />
+				<DetailTile handleTileClick={handleTileClick} className='rockets' title='Rockets' image={RocketsImage} />
 			</div>
 			<div>
-				<DetailTile className='crew' title='Crew' image={CrewImage} />
-				<DetailTile className='starlink' title='Starlink' image={StarlinkImage} />
+				<DetailTile handleTileClick={handleTileClick} className='crew' title='Crew' image={CrewImage} />
+				<DetailTile handleTileClick={handleTileClick} className='starlink' title='Starlink' image={StarlinkImage} />
 			</div>
 		</DetailTilesWrapper>
 	);
@@ -143,4 +131,4 @@ const actions = {
 	setCurrentPopupTitle,
 };
 
-export default connect(mapStateToProps, actions)(DetailsTile);
+export default connect(mapStateToProps, actions)(DetailTiles);

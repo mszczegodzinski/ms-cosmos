@@ -66,55 +66,31 @@ interface DetailsTableProps {
 	getCrewSuccesfully: boolean;
 	getRocketsSuccesfully: boolean;
 	getStarlinkSuccesfully: boolean;
+	currentHeaders: string[];
+	currentVisibleData: any[];
+	currentDisplayData: any[];
 }
 
-const DetailsTable = ({
-	capsulesData,
-	crewData,
-	rocketsData,
-	starlinkData,
-	modalTitle,
-	getCapsulesSuccesfully,
-	getCrewSuccesfully,
-	getRocketsSuccesfully,
-	getStarlinkSuccesfully,
-}: DetailsTableProps) => {
-	const [isLoaderRender, setIsLoaderRender] = useState<boolean>(false);
-	const [currentDisplayData, setCurrentDisplayData] = useState<any[]>([]);
-	const [currentHeaders, setCurrentHeaders] = useState<String[]>([]);
-
-	useEffect(() => {
-		setIsLoaderRender(true);
-		if (modalTitle === 'Capsules') {
-			setCurrentHeaders(['Type', 'Status']);
-			return setCurrentDisplayData(capsulesData);
-		}
-		if (modalTitle === 'Crew') {
-			setCurrentHeaders(['Name', 'Agency']);
-			return setCurrentDisplayData(crewData);
-		}
-		if (modalTitle === 'Rockets') {
-			setCurrentHeaders(['Name', 'Boosters']);
-			return setCurrentDisplayData(rocketsData);
-		}
-		if (modalTitle === 'Starlink') {
-			setCurrentHeaders(['Height_km', 'Velocity_kms']);
-			return setCurrentDisplayData(starlinkData);
-		}
-	}, [getCapsulesSuccesfully, getCrewSuccesfully, getRocketsSuccesfully, getStarlinkSuccesfully]);
-
+const DetailsTable = ({ modalTitle, currentHeaders, currentDisplayData }: DetailsTableProps) => {
 	const renderBodyTable = (): JSX.Element[] => {
 		const result = currentDisplayData.map((row, i) => {
-			return (
-				<RowBody key={`row-data-${i}`}>
-					<CellBody>
-						<TypographyRegular14 color='#D2CBE9'>{row[currentHeaders[0].toLowerCase()]}</TypographyRegular14>
-					</CellBody>
-					<CellBody>
-						<TypographyRegular14 color='#D2CBE9'>{row[currentHeaders[1].toLowerCase()]}</TypographyRegular14>
-					</CellBody>
-				</RowBody>
-			);
+			if (i < 100) {
+				return (
+					<RowBody key={`row-data-${i}`}>
+						<CellBody>
+							<TypographyRegular14 color='#D2CBE9'>
+								{modalTitle === 'Starlink' ? row['spaceTrack'][`${currentHeaders[0]}`] : row[currentHeaders[0].toLowerCase()]}
+							</TypographyRegular14>
+						</CellBody>
+						<CellBody>
+							<TypographyRegular14 color='#D2CBE9'>
+								{modalTitle === 'Starlink' ? row['spaceTrack'][`${currentHeaders[1]}`] : row[currentHeaders[1].toLowerCase()]}
+							</TypographyRegular14>
+						</CellBody>
+					</RowBody>
+				);
+			}
+			return null;
 		});
 		return result;
 	};

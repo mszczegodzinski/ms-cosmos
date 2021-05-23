@@ -36,11 +36,12 @@ interface DetailTileProps {
 	title: string;
 	image: string;
 	className: string;
+	handleTileClick: (e) => void;
 }
 
-const DetailsTile = ({ title, image, className }: DetailTileProps) => {
+const DetailsTile = ({ title, image, className, handleTileClick }: DetailTileProps) => {
 	return (
-		<DetailTileWrapper id={`${title}`} image={image} className={`${className} pointer`}>
+		<DetailTileWrapper id={`${title}`} image={image} className={`${className} pointer`} onClick={handleTileClick}>
 			<StyledTitle className='title'>
 				<TypographyH200>{title}</TypographyH200>
 			</StyledTitle>
