@@ -24,7 +24,8 @@ const ModalContentWrapper = styled(styleUtils.CenteredContent)`
 
 const ModalConent = styled(styleUtils.CenteredContent)<{ isModalVisible: boolean }>`
 	position: fixed;
-	width: 540px;
+	width: 90%;
+	max-width: 540px;
 	height: 360px;
 	border-radius: 16px;
 	background-color: #2b224a;
