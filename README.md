@@ -3,6 +3,9 @@
 Recrutiment task for Userative.
 The best representation of desktop view (width greater than 1200px). Mobile view is optional.
 
+[Click here to run Cosmos app](https://mszczegodzinski.github.io/ms-cosmos/) 
+
+
 ## Required funcionality
 
 - buttons have on hover state,
