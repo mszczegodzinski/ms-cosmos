@@ -8,32 +8,46 @@ import SmokeRight from '../../assets/images/Smoke 1.png';
 const StyledRocket = styled.div`
 	position: absolute;
 	bottom: 304px;
-	right: 223px;
+	right: 208px;
 `;
 
 const StyledLandingGear = styled.div`
 	position: absolute;
 	bottom: 299px;
-	right: 240px;
+	right: 225px;
 `;
 
 const StyledSmokeLeft = styled.div`
 	position: absolute;
 	bottom: 299px;
-	right: 308px;
+	right: 293px;
 	opacity: 0;
 `;
 
 const StyledSmokeRight = styled.div`
 	position: absolute;
 	bottom: 299px;
-	right: 188px;
+	right: 173px;
 	opacity: 0;
+`;
+
+const StyledCompleteRocket = styled.div`
+	position: absolute;
+	width: 100%;
+	right: -70px;
+	z-index: 2;
+	@media screen and (min-width: 850px) {
+		right: -45px;
+		padding-right: 25px;
+	}
+	@media screen and (min-width: 992px) {
+		right: 0;
+	}
 `;
 
 const Rocket = () => {
 	return (
-		<>
+		<StyledCompleteRocket className='completeRocket'>
 			<StyledSmokeLeft className='smokeLeft'>
 				<img src={SmokeLeft} alt='smoke left' />
 			</StyledSmokeLeft>
@@ -46,7 +60,7 @@ const Rocket = () => {
 			<StyledRocket className='rocket'>
 				<img src={RocketImage} alt='rocket' />
 			</StyledRocket>
-		</>
+		</StyledCompleteRocket>
 	);
 };
 

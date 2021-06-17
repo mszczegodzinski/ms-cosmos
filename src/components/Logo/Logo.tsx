@@ -6,7 +6,13 @@ import VectorPurple from '../../assets/images/VectorPurple.svg';
 const LogoWrapper = styled.div`
 	position: relative;
 	height: 24px;
-	margin: 36px 0 0 15px;
+	margin-top: 36px;
+	margin-left: 15px;
+	margin-bottom: 30px;
+	@media screen and (min-width: 850px) {
+		margin-left: 0;
+		margin-bottom: 0px;
+	}
 `;
 const LogoPurple = styled.div`
 	position: absolute;

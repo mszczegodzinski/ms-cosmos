@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { TypographyH300 } from '../Typography/Typography';
 import { createRipples } from 'react-ripples';
 
@@ -10,7 +10,12 @@ const CustomRipples = createRipples({
 
 const ButtonWrapper = styled.div`
 	margin-top: 24px;
-	padding-right: 165px;
+	@media screen and (min-width: 850px) {
+		padding-right: 120px;
+	}
+	@media screen and (min-width: 992px) {
+		padding-right: 165px;
+	}
 `;
 
 const CustomButton = styled.button`

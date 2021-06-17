@@ -5,16 +5,25 @@ import Button from '../Button/Button';
 import styleUtils from '../../helpers/styleUtils';
 
 const LaunchRocketWrapper = styled(styleUtils.CenteredContent)`
-	justify-content: flex-end;
-	align-items: flex-end;
-	width: 50%;
+	padding-top: 100px;
+	width: 100%;
 	height: 100%;
-	padding: 0 15px;
+	padding-bottom: 32px;
+	@media screen and (min-width: 850px) {
+		width: 50%;
+		justify-content: flex-end;
+		align-items: flex-end;
+		padding-left: 35px;
+		padding-top: 0;
+	}
+	@media screen and (min-width: 992px) {
+		padding-left: 95px;
+	}
 `;
 
 const LaunchRocket = () => {
 	return (
-		<LaunchRocketWrapper>
+		<LaunchRocketWrapper className='launchRocketWrapper'>
 			<Planet />
 			<Button>Launch Rocket!</Button>
 		</LaunchRocketWrapper>
